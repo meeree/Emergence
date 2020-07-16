@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class BirdMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    List<BirdMovement> neighbors;
     void Update()
     {
-        
+        dt1 = Seperation();
+        dt2 = Alignment();
+        dt3 = Cohesion();
     }
 }
