@@ -23,6 +23,7 @@ public class BirdManager : MonoBehaviour
         {
             bird.neighbor_avg_pos = Vector3.zero;
             bird.neighbor_avg_angle = 0f;
+            bird.num_neighbors = 0;
         }
 
         for(int i = 0; i < birds.Count; ++i)

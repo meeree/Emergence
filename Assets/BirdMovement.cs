@@ -28,6 +28,7 @@ public class BirdMovement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(num_neighbors);
         if(num_neighbors == 0)
             return;
 
