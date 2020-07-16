@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BirdManager : MonoBehaviour
 {
-    List<BirdMovement> birds;
+    List<BirdMovement> birds = new List<BirdMovement>();
     public float radius = 1f;
 
     void Start ()
