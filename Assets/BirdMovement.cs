@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BirdMovement : MonoBehaviour
 {
+    float angle = 0;
     List<BirdMovement> neighbors;
     void Update()
     {
