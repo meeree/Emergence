@@ -8,6 +8,8 @@ public class BirdMovement : MonoBehaviour
     public Vector3 neighbor_avg_pos = Vector3.zero;
     public float neighbor_avg_angle = 0;
     public float angle = 0;
+    public Vector3 seperation = Vector3.zero;
+    Vector3 velocity = Vector3.zero;
 
     public float speed = 1f;
 
@@ -23,21 +25,24 @@ public class BirdMovement : MonoBehaviour
 
     Vector3 Cohesion()
     {
-        return (neighbor_avg_pos - transform.position).normalized;
+        return (neighbor_avg_pos - transform.position) / 100;
     }
 
     void Update()
     {
-        Debug.Log(num_neighbors);
         if(num_neighbors == 0)
             return;
 
-        Vector3 dt1 = Seperation();
+        Vector3 dt1 = seperation;
         Vector3 dt2 = Alignment();
         Vector3 dt3 = Cohesion();
+        Debug.Log(dt2);
+        Debug.Log(dt3);
 
         Vector3 vel = (dt1 + dt2 + dt3);
-        transform.position += Time.deltaTime * speed * vel;
+        velocity += vel;
+        transform.position += Time.deltaTime * speed * velocity;
         angle = Mathf.Atan2(vel.y, vel.x);
+        angle += Random.Range(0f, 3.14f);
     }
 }

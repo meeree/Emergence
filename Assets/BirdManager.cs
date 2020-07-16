@@ -6,6 +6,7 @@ public class BirdManager : MonoBehaviour
 {
     List<BirdMovement> birds = new List<BirdMovement>();
     public float radius = 1f;
+    public float radius_sep = 0.1f;
 
     void Start ()
     {
@@ -24,6 +25,7 @@ public class BirdManager : MonoBehaviour
             bird.neighbor_avg_pos = Vector3.zero;
             bird.neighbor_avg_angle = 0f;
             bird.num_neighbors = 0;
+            bird.seperation = Vector3.zero;
         }
 
         for(int i = 0; i < birds.Count; ++i)
@@ -42,6 +44,12 @@ public class BirdManager : MonoBehaviour
 
                     birds[i].num_neighbors += 1;
                     birds[j].num_neighbors += 1;
+                }
+
+                if((p1 - p2).magnitude <= radius_sep)
+                {
+                    birds[i].seperation += p1 - p2;
+                    birds[j].seperation += p2 - p1;
                 }
             }
         }
